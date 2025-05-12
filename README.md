@@ -1,4 +1,4 @@
-[<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
@@ -162,7 +162,7 @@
 <body>
     <header>
         <h1>Locomotiva da Alegria</h1>
-        <img src="img/Personagen.PNG" alt="Imagem Decorativa" class="decorative-image">
+        <img src="img/Personagen.png" alt="Imagem Decorativa" class="decorative-image">
     </header>
     <div class="container" id="product-container">
         <!-- Os produtos serão carregados aqui dinamicamente -->
@@ -172,7 +172,7 @@
     <div id="productModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
-            <img src="img/Personagen.PNG" alt="Imagem Decorativa" style="width: 100px; height: auto; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
+            <img src="img/Personagen.png" alt="Imagem Decorativa" style="width: 100px; height: auto; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
             <h2 id="modal-title"></h2>
             <p id="modal-stock"></p>
             <input type="text" id="modal-name" placeholder="Seu Nome" required>
@@ -186,6 +186,7 @@
 
     <footer>
         <p>Desenvolvido por <a href="https://wa.me/+5534988302860">Yuri Silva</a> - Todos os direitos reservados &copy; 2025</p>
+        <p>Para novidades, siga nosso cliente no Instagram: <strong>@locomotivadaalegriaofc</strong> - <a href="https://www.instagram.com/locomotivadaalegriaofc">instagram.com/locomotivadaalegriaofc</a></p>
     </footer>
 
     <script>
@@ -193,10 +194,10 @@
 
         // Simulando dados de produtos
         const produtos = [
-            { id: 1, nome: 'Aniversario', imagem: 'img/Aniversario.jpeg', preco: 100, descricao: 'Celebre seu aniversário com alegria!' },
-            { id: 2, nome: 'Casamento', imagem: 'img/Casamento.JPG', preco: 150, descricao: 'Torne seu casamento inesquecível!' },
-            { id: 3, nome: 'Formatura', imagem: 'img/Formatura.jpg', preco: 200, descricao: 'Comemore sua formatura em grande estilo!' },
-            { id: 4, nome: 'Porta de Loja', imagem: 'img/porta de loja.jpg', preco: 250, descricao: 'Atraia clientes com uma linda porta!' }
+            { id: 1, nome: 'Aniversario', imagem: 'img/Aniversario.jpeg', preco: 'Valor a Combinar', descricao: 'Celebre seu aniversário com alegria!' },
+            { id: 2, nome: 'Casamento', imagem: 'img/Casamento.JPG', preco: 'Valor a Combinar', descricao: 'Torne seu casamento inesquecível!' },
+            { id: 3, nome: 'Formatura', imagem: 'img/Formatura.jpg', preco: 'Valor a Combinar', descricao: 'Comemore sua formatura em grande estilo!' },
+            { id: 4, nome: 'Porta de Loja', imagem: 'img/porta de loja.jpg', preco: 'Valor a Combinar', descricao: 'Atraia clientes com uma linda porta!' }
         ];
 
         // Carregando produtos
@@ -208,9 +209,9 @@
             productDiv.innerHTML = `
                 <h2>${produto.nome}</h2>
                 <img src="${produto.imagem}" alt="${produto.nome}" />
-                <p>Preço: R$ ${produto.preco}</p>
+                <p>Preço: ${produto.preco}</p>
                 <p>Descrição: ${produto.descricao}</p>
-                <button class="button" onclick="abrirModal(${produto.id}, '${produto.nome}', ${produto.preco})">Contratar esse serviço</button>
+                <button class="button" onclick="abrirModal(${produto.id}, '${produto.nome}', '${produto.preco}')">Contratar esse serviço</button>
             `;
 
             container.appendChild(productDiv);
@@ -219,7 +220,7 @@
         function abrirModal(id, nome, preco) {
             selectedProduct = { id, nome, preco };
             document.getElementById('modal-title').textContent = nome;
-            document.getElementById('modal-stock').textContent = `Preço: R$ ${preco}`;
+            document.getElementById('modal-stock').textContent = `Preço: ${preco}`;
             document.getElementById('productModal').style.display = 'block';
         }
 
@@ -249,4 +250,3 @@
 </body>
 
 </html>
-](https://1928370.github.io/Locomotiva_da_Alegria/)
