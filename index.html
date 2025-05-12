@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos do Sérgio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #001f3f, #000000, #007BFF);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        header {
+            background: rgba(44, 62, 80, 0.9);
+            color: #ffffff;
+            padding: 20px 0;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            position: relative;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .product {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 20px 0;
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .product img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+            border-radius: 10px; /* Efeito de borda arredondada */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para efeito bonito */
+            transition: transform 0.3s; /* Efeito ao passar o mouse */
+        }
+
+        .product img:hover {
+            transform: scale(1.05); /* Aumenta a imagem ao passar o mouse */
+        }
+
+        .button {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #2980b9;
+        }
+
+        /* Estilo do modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-content {
+            background-color: #444; /* Cor da janela */
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Efeito de brilho */
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .contact-button {
+            margin: 10px;
+        }
+
+        /* Estilo da imagem decorativa */
+        .decorative-image {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 100px;
+            height: auto;
+            opacity: 0.8;
+        }
+
+        /* Estilos para dispositivos móveis */
+        @media (max-width: 600px) {
+            .decorative-image {
+                top: 5px;
+                right: 5px;
+                width: 80px;
+            }
+
+            header h1 {
+                font-size: 1.5em;
+            }
+
+            .product {
+                padding: 15px;
+            }
+        }
+
+        footer {
+            background: rgba(44, 62, 80, 0.9);
+            color: #ffffff;
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: underline; /* Sublinhado para indicar que é um link */
+            font-weight: bold; /* Para dar destaque */
+        }
+
+        footer a:hover {
+            color: #ffd700; /* Cor ao passar o mouse */
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Locomotiva da Alegria</h1>
+        <img src="img/Personagen.PNG" alt="Imagem Decorativa" class="decorative-image">
+    </header>
+    <div class="container" id="product-container">
+        <!-- Os produtos serão carregados aqui dinamicamente -->
+    </div>
+
+    <!-- Modal para detalhes do produto -->
+    <div id="productModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img src="img/Personagen.PNG" alt="Imagem Decorativa" style="width: 100px; height: auto; margin-bottom: 10px; display: block; margin-left: auto; margin-right: auto;">
+            <h2 id="modal-title"></h2>
+            <p id="modal-stock"></p>
+            <input type="text" id="modal-name" placeholder="Seu Nome" required>
+            <input type="email" id="modal-email" placeholder="Seu Email" required>
+            <div>
+                <button class="button contact-button" onclick="fazerPedido('vinicius')">Enviar para Vinicius</button>
+                <button class="button contact-button" onclick="fazerPedido('gustavo')">Enviar para Gustavo</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Desenvolvido por <a href="https://wa.me/+5534988302860">Yuri Silva</a> - Todos os direitos reservados &copy; 2025</p>
+    </footer>
+
+    <script>
+        let selectedProduct = null;
+
+        // Simulando dados de produtos
+        const produtos = [
+            { id: 1, nome: 'Aniversario', imagem: 'img/Aniversario.jpeg', preco: 100, descricao: 'Celebre seu aniversário com alegria!' },
+            { id: 2, nome: 'Casamento', imagem: 'img/Casamento.JPG', preco: 150, descricao: 'Torne seu casamento inesquecível!' },
+            { id: 3, nome: 'Formatura', imagem: 'img/Formatura.jpg', preco: 200, descricao: 'Comemore sua formatura em grande estilo!' },
+            { id: 4, nome: 'Porta de Loja', imagem: 'img/porta de loja.jpg', preco: 250, descricao: 'Atraia clientes com uma linda porta!' }
+        ];
+
+        // Carregando produtos
+        const container = document.getElementById('product-container');
+        produtos.forEach(produto => {
+            const productDiv = document.createElement('div');
+            productDiv.classList.add('product');
+
+            productDiv.innerHTML = `
+                <h2>${produto.nome}</h2>
+                <img src="${produto.imagem}" alt="${produto.nome}" />
+                <p>Preço: R$ ${produto.preco}</p>
+                <p>Descrição: ${produto.descricao}</p>
+                <button class="button" onclick="abrirModal(${produto.id}, '${produto.nome}', ${produto.preco})">Contratar esse serviço</button>
+            `;
+
+            container.appendChild(productDiv);
+        });
+
+        function abrirModal(id, nome, preco) {
+            selectedProduct = { id, nome, preco };
+            document.getElementById('modal-title').textContent = nome;
+            document.getElementById('modal-stock').textContent = `Preço: R$ ${preco}`;
+            document.getElementById('productModal').style.display = 'block';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function fazerPedido(contato) {
+            const nome = document.getElementById('modal-name').value;
+            const email = document.getElementById('modal-email').value;
+
+            let numeroWhatsApp;
+            if (contato === 'vinicius') {
+                numeroWhatsApp = '+5534988870260'; // Substitua pelo número real do Vinicius
+            } else if (contato === 'gustavo') {
+                numeroWhatsApp = '+55349988870260'; // Substitua pelo número real do Gustavo
+            }
+
+            const mensagem = `Olá, gostaria de contratar o serviço: ${selectedProduct.nome}.\nNome: ${nome}\nEmail: ${email}`;
+            const encodedMessage = encodeURIComponent(mensagem);
+            const whatsappUrl = `https://wa.me/${numeroWhatsApp}?text=${encodedMessage}`;
+
+            window.open(whatsappUrl, '_blank');
+            closeModal();
+        }
+    </script>
+</body>
+
+</html>
