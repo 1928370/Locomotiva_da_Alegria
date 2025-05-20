@@ -8,153 +8,217 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Roboto', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #001f3f, #000000, #007BFF);
+            background: linear-gradient(135deg, #001f3f 0%, #007BFF 100%);
             color: #ffffff;
-            overflow-x: hidden;
+            min-height: 100vh;
         }
 
         header {
-            background: rgba(44, 62, 80, 0.9);
-            color: #ffffff;
-            padding: 20px 0;
+            background: rgba(44, 62, 80, 0.95);
+            color: #fff;
+            padding: 40px 0 30px 0;
             text-align: center;
             font-family: 'Roboto', sans-serif;
             position: relative;
+            box-shadow: 0 0 30px 10px #007BFF99, 0 0 80px 10px #001f3f55 inset;
+        }
+
+        .decorative-image {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            width: 120px;
+            height: auto;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 20px #007BFF) brightness(1.2);
         }
 
         .container {
-            width: 90%;
-            max-width: 800px;
-            margin: auto;
-            overflow: hidden;
+            width: 95%;
+            max-width: 1100px;
+            margin: 40px auto 30px auto;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
         }
 
         .product {
-            background: rgba(255, 255, 255, 0.1);
-            margin: 20px 0;
-            padding: 20px;
+            background: linear-gradient(135deg, #001f3f 60%, #007BFF 100%);
+            margin: 0;
+            padding: 28px 18px 18px 18px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            border-radius: 18px;
+            box-shadow: 0 0 24px 6px #007BFF99, 0 0 40px 10px #001f3f55 inset;
+            min-width: 260px;
+            max-width: 320px;
+            flex: 1 1 260px;
+            border: 2px solid #fff2;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+        }
+
+        .product:hover {
+            transform: scale(1.04) translateY(-8px);
+            box-shadow: 0 0 40px 12px #fff, 0 0 80px 20px #007BFF99 inset;
+            border-color: #ffd700;
         }
 
         .product img {
             max-width: 100%;
-            height: auto;
+            height: 180px;
             object-fit: cover;
-            border-radius: 10px; /* Efeito de borda arredondada */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Sombra para efeito bonito */
-            transition: transform 0.3s; /* Efeito ao passar o mouse */
+            border-radius: 12px;
+            box-shadow: 0 0 18px 4px #007BFF99, 0 0 30px 6px #fff3 inset;
+            margin-bottom: 12px;
         }
 
-        .product img:hover {
-            transform: scale(1.05); /* Aumenta a imagem ao passar o mouse */
+        .product h2 {
+            font-size: 1.3em;
+            margin: 10px 0 6px 0;
+            color: #ffd700;
+            text-shadow: 0 0 8px #fff, 0 0 16px #007BFF;
+        }
+
+        .product p {
+            margin: 6px 0;
+            color: #fff;
+            text-shadow: 0 0 6px #007BFF99;
         }
 
         .button {
-            background: #3498db;
-            color: white;
+            background: linear-gradient(90deg, #ffd700 60%, #007BFF 100%);
+            color: #001f3f;
             border: none;
-            padding: 10px 20px;
+            padding: 12px 28px;
             cursor: pointer;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1em;
+            margin-top: 10px;
+            box-shadow: 0 0 16px 2px #ffd70099, 0 0 10px 2px #007BFF55 inset;
+            transition: background 0.2s, color 0.2s, box-shadow 0.2s;
         }
 
         .button:hover {
-            background: #2980b9;
+            background: linear-gradient(90deg, #fff 60%, #ffd700 100%);
+            color: #007BFF;
+            box-shadow: 0 0 32px 8px #ffd700, 0 0 20px 4px #007BFF99 inset;
         }
 
-        /* Estilo do modal */
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            z-index: 1;
+            z-index: 10;
             left: 0;
             top: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             overflow: auto;
-            background-color: rgba(0, 0, 0, 0.8);
+            background: linear-gradient(135deg, #001f3f 60%, #007BFF 100%);
+            background-color: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(2px);
         }
 
         .modal-content {
-            background-color: #444; /* Cor da janela */
-            margin: 15% auto;
-            padding: 20px;
-            border: 1px solid #888;
-            width: 80%;
+            background: linear-gradient(135deg, #001f3f 60%, #007BFF 100%);
+            margin: 7% auto;
+            padding: 30px 20px 20px 20px;
+            border: 2px solid #ffd700;
+            width: 95%;
+            max-width: 420px;
             text-align: center;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5); /* Efeito de brilho */
+            border-radius: 18px;
+            box-shadow: 0 0 40px 10px #ffd70099, 0 0 80px 20px #007BFF99 inset;
+            color: #fff;
+            position: relative;
+        }
+
+        .modal-content img {
+            width: 90px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 0 16px #ffd700) brightness(1.2);
         }
 
         .close {
-            color: #aaa;
+            color: #ffd700;
             float: right;
-            font-size: 28px;
+            font-size: 32px;
             font-weight: bold;
+            margin-top: -10px;
+            margin-right: -10px;
+            text-shadow: 0 0 10px #fff, 0 0 20px #ffd700;
+            cursor: pointer;
         }
 
         .close:hover,
         .close:focus {
-            color: black;
-            text-decoration: none;
-            cursor: pointer;
+            color: #fff;
+            text-shadow: 0 0 20px #ffd700, 0 0 40px #fff;
         }
 
         .contact-button {
-            margin: 10px;
+            margin: 10px 5px 0 5px;
         }
 
-        /* Estilo da imagem decorativa */
-        .decorative-image {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 100px;
-            height: auto;
-            opacity: 0.8;
+        input[type="text"],
+        input[type="email"] {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ffd700;
+            background: #222b;
+            color: #fff;
+            font-size: 1em;
+            box-shadow: 0 0 8px #007BFF55 inset;
         }
 
-        /* Estilos para dispositivos móveis */
-        @media (max-width: 600px) {
-            .decorative-image {
-                top: 5px;
-                right: 5px;
-                width: 80px;
-            }
+        input[type="text"]:focus,
+        input[type="email"]:focus {
+            outline: none;
+            border-color: #fff;
+            box-shadow: 0 0 16px #ffd700, 0 0 8px #007BFF99 inset;
+        }
 
-            header h1 {
-                font-size: 1.5em;
+        @media (max-width: 700px) {
+            .container {
+                flex-direction: column;
+                gap: 18px;
             }
 
             .product {
-                padding: 15px;
+                min-width: 90vw;
+                max-width: 98vw;
             }
         }
 
         footer {
-            background: rgba(44, 62, 80, 0.9);
-            color: #ffffff;
+            background: rgba(44, 62, 80, 0.95);
+            color: #fff;
             text-align: center;
-            padding: 10px 0;
+            padding: 18px 0 10px 0;
             position: relative;
             bottom: 0;
             width: 100%;
+            font-size: 1.1em;
+            box-shadow: 0 0 30px 10px #007BFF99, 0 0 80px 10px #001f3f55 inset;
         }
 
         footer a {
-            color: #ffffff;
-            text-decoration: underline; /* Sublinhado para indicar que é um link */
-            font-weight: bold; /* Para dar destaque */
+            color: #ffd700;
+            text-decoration: underline;
+            font-weight: bold;
+            transition: color 0.2s;
         }
 
         footer a:hover {
-            color: #ffd700; /* Cor ao passar o mouse */
+            color: #fff;
+            text-shadow: 0 0 10px #ffd700, 0 0 20px #fff;
         }
     </style>
 </head>
@@ -167,6 +231,51 @@
     <div class="container" id="product-container">
         <!-- Os produtos serão carregados aqui dinamicamente -->
     </div>
+    <section class="container" id="eventos-fixos">
+        <div class="product" style="box-shadow: 0 0 32px 8px #ffd700, 0 0 40px 10px #007BFF99 inset; cursor:pointer;" onclick="abrirModal('Aniversário', 'Valor a Combinar')">
+            <h2>Aniversário</h2>
+            <img src="img/Aniversario.jpeg" alt="Aniversário" />
+            <p><b>Preço:</b> Valor a Combinar</p>
+            <p>Leve a Locomotiva da Alegria para animar sua festa de aniversário!</p>
+        </div>
+        <div class="product" style="box-shadow: 0 0 32px 8px #ffd700, 0 0 40px 10px #007BFF99 inset; cursor:pointer;" onclick="abrirModal('Casamento', 'Valor a Combinar')">
+            <h2>Casamento</h2>
+            <img src="img/Casamento.JPG" alt="Casamento" />
+            <p><b>Preço:</b> Valor a Combinar</p>
+            <p>Deixe seu casamento ainda mais inesquecível com a Locomotiva da Alegria!</p>
+        </div>
+        <div class="product" style="box-shadow: 0 0 32px 8px #ffd700, 0 0 40px 10px #007BFF99 inset; cursor:pointer;" onclick="abrirModal('Formatura', 'Valor a Combinar')">
+            <h2>Formatura</h2>
+            <img src="img/Formatura.jpg" alt="Formatura" />
+            <p><b>Preço:</b> Valor a Combinar</p>
+            <p>Comemore sua conquista com muita diversão e brilho!</p>
+        </div>
+        <div class="product" style="box-shadow: 0 0 32px 8px #ffd700, 0 0 40px 10px #007BFF99 inset; cursor:pointer;" onclick="abrirModal('Porta de Loja', 'Valor a Combinar')">
+            <h2>Porta de Loja</h2>
+            <img src="img/porta de loja.jpg" alt="Porta de Loja" />
+            <p><b>Preço:</b> Valor a Combinar</p>
+            <p>Chame atenção para sua loja com a Locomotiva da Alegria!</p>
+        </div>
+        <div style="width:100%;text-align:center;margin:32px 0 0 0;">
+            <a href="https://www.instagram.com/locomotivadaalegriaofc" target="_blank" style="
+                display: inline-block;
+                background: linear-gradient(90deg, #ffd700 60%, #007BFF 100%);
+                color: #001f3f;
+                font-weight: bold;
+                border-radius: 30px;
+                padding: 12px 32px;
+                font-size: 1.15em;
+                text-decoration: none;
+                box-shadow: 0 0 24px 6px #ffd70099, 0 0 40px 10px #007BFF55 inset;
+                transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+                text-shadow: 0 0 10px #fff, 0 0 20px #007BFF;
+                margin-top: 18px;
+            ">
+                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 10px; filter: drop-shadow(0 0 8px #ffd700);">
+                Siga o organizador no Instagram: <strong>@locomotivadaalegriaofc</strong>
+            </a>
+        </div>
+    </section>
 
     <!-- Modal para detalhes do produto -->
     <div id="productModal" class="modal">
@@ -185,40 +294,35 @@
     </div>
 
     <footer>
-        <p>Desenvolvido por <a href="https://wa.me/+5534988302860">Yuri Silva</a> - Todos os direitos reservados &copy; 2025</p>
-        <p>Para novidades, siga nosso cliente no Instagram: <strong>@locomotivadaalegriaofc</strong> - <a href="https://www.instagram.com/locomotivadaalegriaofc">instagram.com/locomotivadaalegriaofc</a></p>
+        <p>Desenvolvido por Yuri Silva - Todos os direitos reservados &copy; 2025</p>
     </footer>
+  
+  
 
     <script>
         let selectedProduct = null;
 
-        // Simulando dados de produtos
-        const produtos = [
-            { id: 1, nome: 'Aniversario', imagem: 'img/Aniversario.jpeg', preco: 'Valor a Combinar', descricao: 'Celebre seu aniversário com alegria!' },
-            { id: 2, nome: 'Casamento', imagem: 'img/Casamento.JPG', preco: 'Valor a Combinar', descricao: 'Torne seu casamento inesquecível!' },
-            { id: 3, nome: 'Formatura', imagem: 'img/Formatura.jpg', preco: 'Valor a Combinar', descricao: 'Comemore sua formatura em grande estilo!' },
-            { id: 4, nome: 'Porta de Loja', imagem: 'img/porta de loja.jpg', preco: 'Valor a Combinar', descricao: 'Atraia clientes com uma linda porta!' }
-        ];
+        // Carregar produtos dinamicamente do backend
+        fetch('http://localhost:3000/dados')
+            .then(response => response.json())
+            .then(produtos => {
+                const container = document.getElementById('product-container');
+                container.innerHTML = '';
+                produtos.forEach(produto => {
+                    const productDiv = document.createElement('div');
+                    productDiv.classList.add('product');
+                    productDiv.innerHTML = `
+                        <img src="${produto.imagem || 'img/Personagen.png'}" alt="${produto.nome}" />
+                        <h2>${produto.nome}</h2>
+                        <p><b>Preço:</b> ${produto.preco}</p>
+                        <button class="button" onclick="abrirModal('${produto.nome}', '${produto.preco}')">Ver Detalhes</button>
+                    `;
+                    container.appendChild(productDiv);
+                });
+            });
 
-        // Carregando produtos
-        const container = document.getElementById('product-container');
-        produtos.forEach(produto => {
-            const productDiv = document.createElement('div');
-            productDiv.classList.add('product');
-
-            productDiv.innerHTML = `
-                <h2>${produto.nome}</h2>
-                <img src="${produto.imagem}" alt="${produto.nome}" />
-                <p>Preço: ${produto.preco}</p>
-                <p>Descrição: ${produto.descricao}</p>
-                <button class="button" onclick="abrirModal(${produto.id}, '${produto.nome}', '${produto.preco}')">Contratar esse serviço</button>
-            `;
-
-            container.appendChild(productDiv);
-        });
-
-        function abrirModal(id, nome, preco) {
-            selectedProduct = { id, nome, preco };
+        function abrirModal(nome, preco) {
+            selectedProduct = { nome, preco };
             document.getElementById('modal-title').textContent = nome;
             document.getElementById('modal-stock').textContent = `Preço: ${preco}`;
             document.getElementById('productModal').style.display = 'block';
@@ -234,9 +338,9 @@
 
             let numeroWhatsApp;
             if (contato === 'vinicius') {
-                numeroWhatsApp = '+5534988870260'; // Substitua pelo número real do Vinicius
+                numeroWhatsApp = '+5534988870260';
             } else if (contato === 'gustavo') {
-                numeroWhatsApp = '+55349988870260'; // Substitua pelo número real do Gustavo
+                numeroWhatsApp = '+55349988870260';
             }
 
             const mensagem = `Olá, gostaria de contratar o serviço: ${selectedProduct.nome}.\nNome: ${nome}\nEmail: ${email}`;
