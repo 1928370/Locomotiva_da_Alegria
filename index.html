@@ -196,6 +196,21 @@
                 min-width: 90vw;
                 max-width: 98vw;
             }
+
+            .decorative-image {
+                position: static;
+                display: block;
+                margin: 0 auto 12px auto;
+                width: 90px;
+                top: unset;
+                right: unset;
+                filter: drop-shadow(0 0 18px #ffd700) brightness(1.2);
+            }
+
+            header {
+                padding-top: 24px;
+                padding-bottom: 24px;
+            }
         }
 
         footer {
