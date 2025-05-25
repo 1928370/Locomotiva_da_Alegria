@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produtos do Sérgio</title>
+    <title>locomotivadaalegriaofc</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         body {
@@ -17,23 +17,24 @@
         }
 
         header {
-            background: rgba(44, 62, 80, 0.95);
+            background: linear-gradient(90deg, #001f3f 60%, #007BFF 100%);
             color: #fff;
-            padding: 40px 0 30px 0;
+            padding: 50px 0 40px 0;
             text-align: center;
             font-family: 'Roboto', sans-serif;
             position: relative;
-            box-shadow: 0 0 30px 10px #007BFF99, 0 0 80px 10px #001f3f55 inset;
+            box-shadow: 0 0 40px 16px #007BFF99, 0 0 120px 20px #ffd70055 inset;
+            border-bottom: 4px solid #ffd700;
         }
 
         .decorative-image {
             position: absolute;
-            top: 20px;
-            right: 40px;
-            width: 120px;
+            top: 30px;
+            right: 60px;
+            width: 140px;
             height: auto;
             opacity: 0.95;
-            filter: drop-shadow(0 0 20px #007BFF) brightness(1.2);
+            filter: drop-shadow(0 0 32px #ffd700) brightness(1.3);
         }
 
         .container {
@@ -220,13 +221,37 @@
             color: #fff;
             text-shadow: 0 0 10px #ffd700, 0 0 20px #fff;
         }
+
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(-30px);
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 18px #fff, 0 0 32px #007BFF, 0 0 8px #ffd700;
+            }
+
+            100% {
+                text-shadow: 0 0 32px #ffd700, 0 0 48px #fff, 0 0 16px #007BFF;
+            }
+        }
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Locomotiva da Alegria</h1>
-        <img src="img/Personagen.png" alt="Imagem Decorativa" class="decorative-image">
+        <h1 style="font-size: 2.8em; letter-spacing: 2px; color: #ffd700; text-shadow: 0 0 18px #fff, 0 0 32px #007BFF, 0 0 8px #ffd700; margin-bottom: 10px;">Locomotiva da Alegria</h1>
+        <p style="font-size: 1.35em; color: #fff; text-shadow: 0 0 10px #007BFF, 0 0 20px #ffd700; margin-bottom: 18px;">Eventos Pra Araguari e região</p>
+        <img src="img/Personagen.png" alt="Imagem Decorativa" class="decorative-image" style="width: 140px; top: 30px; right: 60px; filter: drop-shadow(0 0 32px #ffd700) brightness(1.3);">
+        <div style="margin-top: 18px;">
+            <span style="display: inline-block; background: linear-gradient(90deg, #ffd700 60%, #007BFF 100%); color: #001f3f; font-weight: bold; border-radius: 20px; padding: 8px 24px; font-size: 1.1em; box-shadow: 0 0 18px 4px #ffd70099, 0 0 30px 6px #007BFF55 inset; text-shadow: 0 0 8px #fff, 0 0 16px #007BFF;">Sua festa, nosso brilho!</span>
+        </div>
     </header>
     <div class="container" id="product-container">
         <!-- Os produtos serão carregados aqui dinamicamente -->
@@ -275,6 +300,42 @@
                 Siga o organizador no Instagram: <strong>@locomotivadaalegriaofc</strong>
             </a>
         </div>
+        <div style="width:100%;text-align:center;margin:32px 0 0 0;">
+            <button class="button" style="background:linear-gradient(90deg,#007BFF 60%,#ffd700 100%);color:#fff;font-size:1.1em;box-shadow:0 0 24px 6px #007BFF99,0 0 40px 10px #ffd70055 inset;text-shadow:0 0 10px #ffd700,0 0 20px #007BFF;" onclick="window.open('https://api.whatsapp.com/send?phone=5534988870260&text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20para%20meu%20evento.', '_blank')">
+                Solicite um orçamento rápido no WhatsApp
+            </button>
+        </div>
+        <div style="width:100%;text-align:center;margin:32px 0 0 0;">
+            <button class="button" style="background:linear-gradient(90deg,#ffd700 60%,#007BFF 100%);color:#001f3f;font-size:1.1em;box-shadow:0 0 24px 6px #ffd70099,0 0 40px 10px #007BFF55 inset;text-shadow:0 0 10px #fff,0 0 20px #007BFF;" onclick="window.scrollTo({top:document.body.scrollHeight,left:0,behavior:'smooth'});">
+                Ver depoimentos de clientes
+            </button>
+        </div>
+    </section>
+    <section class="container" id="depoimentos" style="margin-top:40px;flex-direction:column;align-items:center;">
+        <h2 style="color:#ffd700;text-shadow:0 0 10px #fff,0 0 20px #007BFF;">Depoimentos de Clientes</h2>
+       <div style="background:rgba(0,0,0,0.3);border-radius:16px;padding:18px 24px;margin:12px 0;max-width:600px;box-shadow:0 0 24px 6px #007BFF99,0 0 40px 10px #ffd70055 inset;">
+            <p style="font-style:italic;">Depoimento em áudio:</p>
+            <audio controls style="width:100%;height:48px;margin-top:8px;">
+                <source src="vid/depoimento Camila  de Uberlândia .mp3" type="audio/mpeg">
+                Seu navegador não suporta o elemento de áudio.
+            </audio>
+            <span style="color:#ffd700;font-weight:bold;">- Camila, Uberlândia</span>
+       
+        <div style="background:rgba(0,0,0,0.3);border-radius:16px;padding:18px 24px;margin:12px 0;max-width:600px;box-shadow:0 0 24px 6px #007BFF99,0 0 40px 10px #ffd70055 inset;">
+            <p style="font-style:italic;">"A Locomotiva da Alegria fez do aniversário do meu filho um momento inesquecível! Recomendo demais!"</p>
+            <span style="color:#ffd700;font-weight:bold;">- Juliana, Uberlândia</span>
+        </div>
+        <div style="background:rgba(0,0,0,0.3);border-radius:16px;padding:18px 24px;margin:12px 0;max-width:600px;box-shadow:0 0 24px 6px #007BFF99,0 0 40px 10px #ffd70055 inset;">
+            <p style="font-style:italic;">"Fizemos a inauguração da loja Alice Modinha e foi um sucesso! Obrigado pela animação e profissionalismo."</p>
+            <span style="color:#ffd700;font-weight:bold;">- Alice Modinha, Araguari</span>
+        </div>
+        </div>
+        
+        <div style="margin-top:32px;">
+            <span style="color:#ffd700;font-size:1.15em;text-shadow:0 0 10px #fff,0 0 20px #007BFF;">
+                <b>Atendemos Araguari e região!</b>
+            </span>
+        </div>
     </section>
 
     <!-- Modal para detalhes do produto -->
@@ -293,8 +354,16 @@
         </div>
     </div>
 
+    <div id="entrada-animacao" style="position:fixed;z-index:9999;top:0;left:0;width:100vw;height:100vh;background:linear-gradient(135deg,#001f3f 0%,#007BFF 100%);display:flex;align-items:center;justify-content:center;transition:opacity 1s;">
+        <div style="text-align:center;">
+            <img src="img/Personagen.png" alt="Locomotiva da Alegria" style="width:120px;filter:drop-shadow(0 0 32px #ffd700) brightness(1.3);animation: bounce 1.2s infinite alternate;">
+            <h1 style="color:#ffd700;font-size:2.5em;text-shadow:0 0 18px #fff,0 0 32px #007BFF,0 0 8px #ffd700;margin:18px 0 0 0;animation: glow 2s infinite alternate;">Bem-vindo à Locomotiva da Alegria!</h1>
+            <p style="color:#fff;font-size:1.3em;text-shadow:0 0 10px #007BFF,0 0 20px #ffd700;margin-top:10px;">Eventos Pra Araguari e região</p>
+        </div>
+    </div>
+
     <footer>
-        <p>Desenvolvido por Yuri Silva - Todos os direitos reservados &copy; 2025</p>
+        <p>Desenvolvido por <a href="https://www.instagram.com/yurisilva1.s/?utm_source=ig_web_button_share_sheet" target="_blank" style="color:#ffd700;text-decoration:underline;font-weight:bold;">Yuri Silva</a> - Todos os direitos reservados &copy; 2025</p>
     </footer>
   
   
@@ -350,6 +419,16 @@
             window.open(whatsappUrl, '_blank');
             closeModal();
         }
+
+        window.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const anim = document.getElementById('entrada-animacao');
+                anim.style.opacity = '0';
+                setTimeout(function() {
+                    anim.style.display = 'none';
+                }, 1000);
+            }, 2200);
+        });
     </script>
 </body>
 
